@@ -1,0 +1,27 @@
+<div class="container">
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label for="userName">UserName</label>
+            <input type="text" 
+            id="userName" 
+            class="form-control" 
+            formControlName="userName"
+            >
+            <div class="alert alert-danger" *ngIf="form.get('userName').touched && form.get('userName').invalid">
+                <div *ngIf="username.errors.required">The UserName is compulsory</div>
+                <div *ngIf="username.errors.minlength">Minimun of 3 letters</div>
+                <div *ngIf="username.errors.cannotContainSpace">Cannot contain space because it is a userName</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" 
+            id="password" 
+            class="form-control" 
+            formControlName="password"
+            >
+            <div class="alert alert-danger" *ngIf="password.touched && password.invalid">The Password is Mandatory</div>
+        </div>
+        <button class="btn btn-success mt-2 " [disabled]="username.invalid || password.invalid">Login</button>
+    </form>
+</div>
